@@ -10,7 +10,10 @@ interface TodoItem {
 }
 
 const TodoApp = () => {
+  // текущее состояние todos и setTodos - функция, обновляющая состояние
+  // аргумент TodoItem - исходное состояние, изменяемое через фунция setTodos
   const [todos, setTodos] = useState<TodoItem[]>([]);
+  // через setNewTodo изменяем 
   const [newTodo, setNewTodo] = useState('');
 
   const addTodo = () => {
@@ -21,7 +24,9 @@ const TodoApp = () => {
         text: newTodo,
         completed: false,
       };
+      // объединить то, что ввел пользователь и данные, заполненные по шаблону, записать в текущее состояние todos
       setTodos([...todos, newTodoItem]);
+      // очистить состояние 
       setNewTodo('');
     }
   };
@@ -51,6 +56,7 @@ const TodoApp = () => {
             className="form-control"
             placeholder="Введите задачу..."
             value={newTodo}
+            //При вводе в input данные сохраняются в newTodo
             onChange={(e) => setNewTodo(e.target.value)}
           />
         </div>
